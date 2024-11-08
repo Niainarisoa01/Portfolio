@@ -1,6 +1,6 @@
 # Python
 __pycache__/
-*.py[cod]
+*.pyc
 *.so
 .Python
 venv/
@@ -27,3 +27,4 @@ Thumbs.db
 
 # Railway
 .railway/
+railway-static/
