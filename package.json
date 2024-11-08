@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "mkdir -p static/css && tailwindcss -i ./static/src/input.css -o ./static/css/output.css --minify",
+    "build": "if not exist static\\css mkdir static\\css && tailwindcss -i ./static/src/input.css -o ./static/css/output.css --minify",
     "dev": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch"
   },
   "devDependencies": {
