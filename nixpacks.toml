@@ -1,18 +1,23 @@
 [phases.setup]
-nixPkgs = ['nodejs', 'python39', 'python39Packages.pip', 'gcc']
+nixPkgs = ['nodejs', 'python39', 'python39Packages.pip']
 
 [phases.install]
 cmds = [
-  'python -m ensurepip --upgrade',
-  'python -m pip install --no-cache-dir -r requirements.txt',
-  'npm install'
+  'python -m pip install --upgrade pip',
+  'pip install -r requirements.txt',
+  'npm ci'
 ]
 
 [phases.build]
 cmds = [
   'mkdir -p static/css',
-  'npm run build'
+  'CI=false npm run build'
 ]
 
 [start]
-cmd = 'gunicorn wsgi:app --bind=0.0.0.0:$PORT' 
+cmd = 'gunicorn wsgi:app --bind=0.0.0.0:$PORT --log-file -'
+
+[deploy]
+startCommand = 'gunicorn wsgi:app --bind=0.0.0.0:$PORT --log-file -'
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3 

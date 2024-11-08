@@ -2,10 +2,11 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "Portfolio personnel",
+  "private": true,
   "scripts": {
     "build": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --minify",
     "watch": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch",
-    "postinstall": "mkdir -p static/css && npm run build"
+    "postinstall": "npm run build"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.9",
