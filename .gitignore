@@ -28,3 +28,11 @@ Thumbs.db
 # Railway
 .railway/
 railway-static/
+
+# Cache
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
