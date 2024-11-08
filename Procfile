@@ -1,1 +1,1 @@
-web: gunicorn wsgi:app --log-file - 
+web: mkdir -p static/css && npm run build && gunicorn wsgi:app --log-file - 
