@@ -9,6 +9,9 @@ ENV/
 .env.local
 instance/
 
+test_
+test/
+
 # Node
 node_modules/
 npm-debug.log
