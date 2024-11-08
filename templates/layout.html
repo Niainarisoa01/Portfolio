@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon Portfolio{% endblock %}</title>
+    <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+    <!-- Ajout de Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 min-h-screen">
+    <!-- Navigation responsive avec effet de verre -->
+    <nav class="backdrop-blur-md bg-white/70 dark:bg-gray-800/70 shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">Portfolio</span>
+                    </a>
+                </div>
+                
+                <!-- Menu mobile -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Menu desktop avec animation hover -->
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                    <a href="/" class="nav-link group {% if active_page == 'home' %}active{% endif %}">
+                        <i class="fas fa-home mr-2"></i>Accueil
+                        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-blue-600"></span>
+                    </a>
+                    <a href="/about" class="nav-link group {% if active_page == 'about' %}active{% endif %}">
+                        <i class="fas fa-user mr-2"></i>À propos
+                        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-blue-600"></span>
+                    </a>
+                    <a href="/projects" class="nav-link group {% if active_page == 'projects' %}active{% endif %}">
+                        <i class="fas fa-code mr-2"></i>Projets
+                        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-blue-600"></span>
+                    </a>
+                    <a href="/contact" class="nav-link group {% if active_page == 'contact' %}active{% endif %}">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-blue-600"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu mobile avec animation -->
+        <div id="mobile-menu" class="hidden md:hidden transform transition-transform duration-300">
+            <a href="/" class="mobile-nav-link {% if active_page == 'home' %}active{% endif %}">
+                <i class="fas fa-home mr-2"></i>Accueil
+            </a>
+            <a href="/about" class="mobile-nav-link {% if active_page == 'about' %}active{% endif %}">
+                <i class="fas fa-user mr-2"></i>À propos
+            </a>
+            <a href="/projects" class="mobile-nav-link {% if active_page == 'projects' %}active{% endif %}">
+                <i class="fas fa-code mr-2"></i>Projets
+            </a>
+            <a href="/contact" class="mobile-nav-link {% if active_page == 'contact' %}active{% endif %}">
+                <i class="fas fa-envelope mr-2"></i>Contact
+            </a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-24">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-md shadow-lg mt-8">
+        <div class="max-w-7xl mx-auto py-8 px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <p class="text-gray-600 dark:text-gray-400">
+                    © 2024 Mon Portfolio. Tous droits réservés.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500 transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500 transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500 transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

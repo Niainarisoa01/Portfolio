@@ -1,0 +1,248 @@
+{% extends "layout.html" %}
+
+{% block title %}Accueil - Mon Portfolio{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <!-- Hero Section améliorée -->
+    <div class="flex flex-col-reverse lg:flex-row items-center justify-between py-12 gap-8">
+        <div class="lg:w-1/2 space-y-6">
+            <h1 class="text-4xl md:text-6xl font-bold animate-slide-up">
+                <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+                    Développeur Web
+                </span>
+                <br>
+                <span class="animate-fade-in text-gray-800 dark:text-white" style="animation-delay: 300ms;">
+                    Full Stack
+                </span>
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 animate-fade-in leading-relaxed" style="animation-delay: 600ms;">
+                Développeur d'applications modernes et performantes en Python, React, et Desktop
+            </p>
+            <!-- Boutons d'action -->
+            <div class="flex flex-wrap gap-4 animate-fade-in" style="animation-delay: 900ms;">
+                <a href="/projects" class="btn-primary">
+                    <i class="fas fa-code mr-2"></i>Voir mes projets
+                </a>
+                <a href="/contact" class="btn-secondary">
+                    <i class="fas fa-envelope mr-2"></i>Me contacter
+                </a>
+            </div>
+
+            <!-- Technologies avec animation -->
+            <div class="flex flex-wrap gap-4 pt-6">
+                <!-- Python -->
+                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
+                    <i class="fab fa-python text-blue-500 group-hover:animate-bounce"></i>
+                    <span class="ml-2 text-gray-700 dark:text-gray-300">Python</span>
+                </span>
+
+                <!-- JavaScript -->
+                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
+                    <i class="fab fa-js text-yellow-500 group-hover:animate-bounce"></i>
+                    <span class="ml-2 text-gray-700 dark:text-gray-300">JavaScript</span>
+                </span>
+
+                <!-- React -->
+                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
+                    <i class="fab fa-react text-blue-400 group-hover:animate-spin"></i>
+                    <span class="ml-2 text-gray-700 dark:text-gray-300">React</span>
+                </span>
+
+                <!-- Node.js -->
+                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
+                    <i class="fab fa-node text-green-500 group-hover:animate-bounce"></i>
+                    <span class="ml-2 text-gray-700 dark:text-gray-300">Node.js</span>
+                </span>
+
+                <!-- Flask -->
+                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
+                    <i class="fas fa-flask text-gray-600 dark:text-gray-400 group-hover:animate-bounce"></i>
+                    <span class="ml-2 text-gray-700 dark:text-gray-300">Flask</span>
+                </span>
+
+                <!-- REST API -->
+                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
+                    <i class="fas fa-network-wired text-purple-500 group-hover:animate-pulse"></i>
+                    <span class="ml-2 text-gray-700 dark:text-gray-300">REST API</span>
+                </span>
+
+                <!-- Tailwind -->
+                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
+                    <i class="fab fa-css3 text-cyan-500 group-hover:animate-bounce"></i>
+                    <span class="ml-2 text-gray-700 dark:text-gray-300">Tailwind</span>
+                </span>
+
+                <!-- Material UI -->
+                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
+                    <i class="fas fa-palette text-blue-600 group-hover:animate-bounce"></i>
+                    <span class="ml-2 text-gray-700 dark:text-gray-300">Material UI</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- Nouvelle section droite avec design professionnel -->
+        <div class="lg:w-1/2 relative">
+            <div class="relative z-10 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80">
+                <div class="absolute -top-4 -left-4 w-24 h-24 bg-blue-500/10 rounded-full animate-pulse-slow"></div>
+                <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-purple-500/10 rounded-full animate-pulse-slow" style="animation-delay: 1s;"></div>
+                
+                <!-- Carte de profil -->
+                <div class="relative z-20 space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <img src="{{ url_for('static', filename='images/profile.jpg') }}" 
+                                 alt="NOMENJANAHARY Niainarisoa" 
+                                 class="w-20 h-20 rounded-full object-cover ring-4 ring-blue-500/30">
+                            <div class="absolute -bottom-2 -right-2 bg-green-500 w-4 h-4 rounded-full border-2 border-white dark:border-gray-800"></div>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-800 dark:text-white">NOMENJANAHARY Niainarisoa</h2>
+                            <p class="text-gray-600 dark:text-gray-300">Développeur Full Stack</p>
+                        </div>
+                    </div>
+
+                    <!-- Statistiques rapides -->
+                    <div class="grid grid-cols-3 gap-4 py-4 border-t border-b border-gray-200 dark:border-gray-700">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-blue-600">3+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Années d'exp.</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-purple-600">20+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Projets</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-green-600">15+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Clients</div>
+                        </div>
+                    </div>
+
+                    <!-- Technologies principales -->
+                    <div class="space-y-2">
+                        <h3 class="text-sm font-semibold text-gray-600 dark:text-gray-400">Technologies principales</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm">Flask</span>
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm">Node.js</span>
+                        </div>
+                    </div>
+
+                    <!-- Disponibilité -->
+                    <div class="flex items-center justify-between">
+                        <span class="flex items-center text-green-600">
+                            <i class="fas fa-circle text-xs mr-2"></i>
+                            Disponible pour des projets
+                        </span>
+                        <a href="/contact" class="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                            Contactez-moi <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Éléments décoratifs -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10">
+                <div class="absolute top-0 left-0 w-72 h-72 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse-slow"></div>
+                <div class="absolute bottom-0 right-0 w-72 h-72 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Skills Section -->
+    <div class="mt-24">
+        <h2 class="text-3xl font-bold text-center mb-12 animate-fade-in">
+            <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+                Mes Compétences
+            </span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="card p-6 animate-on-scroll">
+                <div class="text-4xl mb-4 bg-blue-100 dark:bg-blue-900/30 w-16 h-16 rounded-lg flex items-center justify-center text-blue-600">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">Frontend</h3>
+                <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>HTML5 / CSS3
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>JavaScript / TypeScript
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>React.js / Vue.js
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>Tailwind CSS
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card p-6 animate-on-scroll" style="animation-delay: 200ms;">
+                <div class="text-4xl mb-4 bg-purple-100 dark:bg-purple-900/30 w-16 h-16 rounded-lg flex items-center justify-center text-purple-600">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">Backend</h3>
+                <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>Python / Flask
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>Node.js / Express
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>SQL / NoSQL
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>RESTful APIs
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card p-6 animate-on-scroll" style="animation-delay: 400ms;">
+                <div class="text-4xl mb-4 bg-green-100 dark:bg-green-900/30 w-16 h-16 rounded-lg flex items-center justify-center text-green-600">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">DevOps</h3>
+                <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>Git / GitHub
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>Docker
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>CI/CD
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-2"></i>AWS / Heroku
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="card p-6 text-center animate-on-scroll">
+            <div class="text-3xl font-bold text-blue-600">
+                <span class="stat-number" data-target="3">0</span>+
+            </div>
+            <div class="text-gray-600 dark:text-gray-300">Années d'expérience</div>
+        </div>
+        <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 200ms;">
+            <div class="text-3xl font-bold text-purple-600">20+</div>
+            <div class="text-gray-600 dark:text-gray-300">Projets réalisés</div>
+        </div>
+        <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 400ms;">
+            <div class="text-3xl font-bold text-green-600">15+</div>
+            <div class="text-gray-600 dark:text-gray-300">Clients satisfaits</div>
+        </div>
+        <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 600ms;">
+            <div class="text-3xl font-bold text-orange-600">100%</div>
+            <div class="text-gray-600 dark:text-gray-300">Taux de satisfaction</div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
