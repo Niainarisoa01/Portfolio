@@ -1,8 +1,9 @@
 [phases.setup]
-nixPkgs = ['nodejs', 'python39']
+nixPkgs = ['python39', 'python39Packages.pip', 'nodejs', 'npm']
 
 [phases.install]
 cmds = [
+  'python -m pip install --upgrade pip',
   'python -m pip install -r requirements.txt',
   'npm install'
 ]
@@ -11,4 +12,4 @@ cmds = [
 cmds = ['npm run build']
 
 [start]
-cmd = "gunicorn 'run:app'" 
+cmd = 'python run.py' 

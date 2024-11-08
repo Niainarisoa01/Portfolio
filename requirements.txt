@@ -1,9 +1,5 @@
 Flask
-gunicorn
 python-dotenv
-flask-mail
-flask-sqlalchemy
-Werkzeug
-Jinja2
-itsdangerous
-click
+Flask-SQLAlchemy
+Flask-Mail
+gunicorn

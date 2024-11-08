@@ -1,8 +1,9 @@
 [build]
-builder = "nixpacks"
-buildCommand = "pip install -r requirements.txt"
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "gunicorn wsgi:app"
+startCommand = "gunicorn --bind 0.0.0.0:$PORT run:app"
+restartPolicyType = "on-failure"
 healthcheckPath = "/"
 healthcheckTimeout = 100 
