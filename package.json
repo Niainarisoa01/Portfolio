@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Portfolio personnel",
   "scripts": {
-    "build": "tailwindcss -i ./static/css/input.css -o ./static/css/output.css --minify",
-    "watch": "tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch",
+    "build": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --minify",
+    "watch": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch",
     "postinstall": "npm run build"
   },
   "devDependencies": {

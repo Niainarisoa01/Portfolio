@@ -1,0 +1,66 @@
+# Cursor Rules for Portfolio Project
+
+# Project Structure
+/portfolio/
+  /static/
+    /css/
+      styles.css
+    /js/
+      main.js
+    /images/
+  /templates/
+    layout.html
+    index.html
+    about.html
+    projects.html
+    contact.html
+  /instance/
+  app.py
+  requirements.txt
+  .env
+  README.md
+
+# File Patterns
+*.py = Python files (Flask backend)
+*.html = HTML template files
+*.js = JavaScript files
+*.css = CSS files using Tailwind
+
+# Coding Standards
+- Use 4 spaces for indentation in Python files
+- Use 2 spaces for indentation in HTML/CSS/JS files
+- Follow PEP 8 style guide for Python code
+- Use meaningful variable and function names
+- Add comments for complex logic
+- Keep functions small and focused
+
+# Flask Guidelines
+- Use Blueprint for route organization
+- Implement proper error handling
+- Use environment variables for sensitive data
+- Follow RESTful principles for APIs
+- Use Flask-SQLAlchemy for database operations
+- Use Flask-Mail for email functionality
+- Use Jinja2 for templating
+
+# Frontend Guidelines
+- Use Tailwind CSS for styling
+- Make responsive design a priority
+- Implement progressive enhancement
+- Optimize images and assets
+- Ensure accessibility standards
+- Use semantic HTML elements
+
+# Security Rules
+- Implement CSRF protection
+- Sanitize user inputs
+- Use secure headers
+- Keep dependencies updated
+- Follow OWASP security guidelines
+
+# Performance Guidelines
+- Minimize HTTP requests
+- Optimize database queries
+- Use caching where appropriate
+- Compress static assets
+- Lazy load images
