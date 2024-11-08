@@ -1,11 +1,12 @@
 [phases.setup]
-nixPkgs = ['nodejs', 'python39', 'python39Packages.pip']
+nixPkgs = ['nodejs', 'python39', 'python39Packages.pip', 'python39Packages.setuptools', 'python39Packages.wheel']
+aptPkgs = ['python3-pip']
 
 [phases.install]
 cmds = [
-  'python -m pip install --upgrade pip setuptools wheel',
-  'pip install -r requirements.txt',
-  'npm install --production=false'
+  'python3 -m ensurepip',
+  'python3 -m pip install --no-cache-dir -r requirements.txt',
+  'npm install'
 ]
 
 [phases.build]
@@ -18,5 +19,7 @@ cmd = 'gunicorn wsgi:app --bind=0.0.0.0:$PORT --log-file -'
 
 [deploy]
 startCommand = 'gunicorn wsgi:app --bind=0.0.0.0:$PORT --log-file -'
+healthcheckPath = "/"
+healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3 
