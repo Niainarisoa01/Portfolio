@@ -3,3 +3,5 @@ python-dotenv
 Flask-SQLAlchemy
 Flask-Mail
 gunicorn
+Werkzeug
+# Ajoutez d'autres dépendances si nécessaire
