@@ -2,6 +2,14 @@ Flask
 python-dotenv
 Flask-SQLAlchemy
 Flask-Mail
+Flask-CORS
+Flask-Limiter
 gunicorn
 Werkzeug
+blinker
+pytest
+pytest-cov
+dnspython
+redis
+html-sanitizer
 # Ajoutez d'autres dépendances si nécessaire

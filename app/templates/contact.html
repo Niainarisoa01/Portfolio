@@ -76,7 +76,7 @@
 
         <!-- Formulaire de contact -->
         <div class="card p-8 animate-on-scroll" style="animation-delay: 200ms;">
-            <form class="space-y-6">
+            <form id="contactForm" class="space-y-6">
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Nom complet
@@ -121,6 +121,13 @@
                              placeholder="Votre message ici..."></textarea>
                 </div>
                 
+                <div id="successMessage" class="hidden p-4 bg-green-100 text-green-700 rounded-md">
+                    Message envoyé avec succès ! Vous recevrez une confirmation par email.
+                </div>
+
+                <div id="errorMessage" class="hidden p-4 bg-red-100 text-red-700 rounded-md">
+                </div>
+
                 <div>
                     <button type="submit" 
                             class="w-full btn-primary">
@@ -132,4 +139,56 @@
         </div>
     </div>
 </div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const submitButton = this.querySelector('button[type="submit"]');
+    
+    // Cacher les messages précédents
+    successMessage.classList.add('hidden');
+    errorMessage.classList.add('hidden');
+    
+    // Désactiver le bouton pendant l'envoi
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Envoi en cours...';
+
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
+    try {
+        const response = await fetch('/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            successMessage.classList.remove('hidden');
+            this.reset();
+        } else {
+            errorMessage.textContent = data.error || 'Une erreur est survenue';
+            errorMessage.classList.remove('hidden');
+        }
+    } catch (error) {
+        errorMessage.textContent = 'Une erreur est survenue lors de l\'envoi du message';
+        errorMessage.classList.remove('hidden');
+    } finally {
+        // Réactiver le bouton
+        submitButton.disabled = false;
+        submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Envoyer le message';
+    }
+});
+</script>
 {% endblock %} 

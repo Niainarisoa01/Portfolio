@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Contact Form</title>
+</head>
+<body>
+    <button onclick="testContact()">Tester le formulaire de contact</button>
+
+    <script>
+        function testContact() {
+            fetch('http://localhost:5000/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: 'Test User',
+                    email: 'test@example.com',
+                    subject: 'Test du formulaire de contact',
+                    message: 'Ceci est un message de test du formulaire de contact.'
+                })
+            })
+            .then(response => response.json())
+            .then(data => alert(JSON.stringify(data)))
+            .catch(error => alert('Erreur: ' + error));
+        }
+    </script>
+</body>
+</html> 
