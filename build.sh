@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Mise à jour de pip
-python -m pip install --upgrade pip
+# Installation de pip de manière sûre
+python -m ensurepip --upgrade
+python -m pip install --no-cache-dir --upgrade pip setuptools wheel
 
-# Installation des dépendances Python
-pip install -r requirements.txt
+# Installation des dépendances Python sans utiliser le cache
+pip install --no-cache-dir -r requirements.txt
 
 # Installation explicite de gunicorn
-pip install gunicorn
+pip install --no-cache-dir gunicorn
 
 # Création des dossiers nécessaires
 mkdir -p static/css

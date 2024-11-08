@@ -1,1 +1,1 @@
-web: mkdir -p static/css && npm run build && gunicorn wsgi:app --log-file - 
+web: pip install --no-cache-dir -r requirements.txt && gunicorn wsgi:app --log-file - 
