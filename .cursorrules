@@ -1,25 +1,5 @@
 # Cursor Rules for Portfolio Project
 
-# Project Structure
-/portfolio/
-  /static/
-    /css/
-      styles.css
-    /js/
-      main.js
-    /images/
-  /templates/
-    layout.html
-    index.html
-    about.html
-    projects.html
-    contact.html
-  /instance/
-  app.py
-  requirements.txt
-  .env
-  README.md
-
 # File Patterns
 *.py = Python files (Flask backend)
 *.html = HTML template files
@@ -64,3 +44,8 @@
 - Use caching where appropriate
 - Compress static assets
 - Lazy load images
+
+On vas deployer sur Railway.
+
+voici le lien de documentation de Railway : https://docs.railway.app/
+se refferer au documentation pour la configuration du deployement.

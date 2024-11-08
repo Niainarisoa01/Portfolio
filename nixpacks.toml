@@ -1,15 +1,14 @@
 [phases.setup]
-nixPkgs = ['python311', 'nodejs', 'npm']
+nixPkgs = ['nodejs', 'python39']
 
 [phases.install]
 cmds = [
-  'python -m pip install --upgrade pip',
-  'npm install',
-  'pip install -r requirements.txt'
+  'python -m pip install -r requirements.txt',
+  'npm install'
 ]
 
 [phases.build]
 cmds = ['npm run build']
 
 [start]
-cmd = 'gunicorn wsgi:app' 
+cmd = "gunicorn 'run:app'" 
