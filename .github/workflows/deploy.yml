@@ -64,6 +64,10 @@ jobs:
           echo "MAIL_PASSWORD=password" >> .env
           echo "MAIL_DEFAULT_SENDER=test@example.com" >> .env
           
+      - name: Update Procfile for Gunicorn
+        run: |
+          echo "web: gunicorn wsgi:app" > Procfile
+          
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
