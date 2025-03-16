@@ -1,0 +1,194 @@
+{% extends "layout.html" %}
+
+{% block title %}Contact - Mon Portfolio{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <h1 class="text-4xl font-bold text-center mb-12">
+        <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+            Me Contacter
+        </span>
+    </h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Informations de contact -->
+        <div class="space-y-8 animate-on-scroll">
+            <div class="card p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">
+                    Restons en contact
+                </h2>
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg">
+                            <i class="fas fa-envelope text-2xl text-blue-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Email</p>
+                            <p class="text-gray-800 dark:text-white">niainarisoa.mail@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-lg">
+                            <i class="fas fa-phone text-2xl text-purple-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Téléphone</p>
+                            <p class="text-gray-800 dark:text-white">+261 34 48 252 85</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-green-100 dark:bg-green-900/30 p-3 rounded-lg">
+                            <i class="fas fa-map-marker-alt text-2xl text-green-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Localisation</p>
+                            <p class="text-gray-800 dark:text-white">ISE 317/3205 Soatsihadino, Fianarantsoa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Réseaux sociaux -->
+            <div class="card p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">
+                    Suivez-moi
+                </h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <a href="https://www.linkedin.com/in/niaina-nomenjanahary" class="flex items-center space-x-3 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fab fa-linkedin text-2xl text-blue-600"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fab fa-twitter text-2xl text-blue-400"></i>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fab fa-instagram text-2xl text-pink-600"></i>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulaire de contact -->
+        <div class="card p-8 animate-on-scroll" style="animation-delay: 200ms;">
+            <form id="contactForm" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        Nom complet
+                    </label>
+                    <input type="text" 
+                           id="name" 
+                           name="name" 
+                           class="input-field"
+                           placeholder="John Doe">
+                </div>
+                
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        Email
+                    </label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           class="input-field"
+                           placeholder="john@example.com">
+                </div>
+                
+                <div>
+                    <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        Sujet
+                    </label>
+                    <input type="text" 
+                           id="subject" 
+                           name="subject" 
+                           class="input-field"
+                           placeholder="Le sujet de votre message">
+                </div>
+                
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        Message
+                    </label>
+                    <textarea id="message" 
+                             name="message" 
+                             rows="4" 
+                             class="input-field"
+                             placeholder="Votre message ici..."></textarea>
+                </div>
+                
+                <div id="successMessage" class="hidden p-4 bg-green-100 text-green-700 rounded-md">
+                    Message envoyé avec succès ! Vous recevrez une confirmation par email.
+                </div>
+
+                <div id="errorMessage" class="hidden p-4 bg-red-100 text-red-700 rounded-md">
+                </div>
+
+                <div>
+                    <button type="submit" 
+                            class="w-full btn-primary">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Envoyer le message
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const submitButton = this.querySelector('button[type="submit"]');
+    
+    // Cacher les messages précédents
+    successMessage.classList.add('hidden');
+    errorMessage.classList.add('hidden');
+    
+    // Désactiver le bouton pendant l'envoi
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Envoi en cours...';
+
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
+    try {
+        const response = await fetch('/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            successMessage.classList.remove('hidden');
+            this.reset();
+        } else {
+            errorMessage.textContent = data.error || 'Une erreur est survenue';
+            errorMessage.classList.remove('hidden');
+        }
+    } catch (error) {
+        errorMessage.textContent = 'Une erreur est survenue lors de l\'envoi du message';
+        errorMessage.classList.remove('hidden');
+    } finally {
+        // Réactiver le bouton
+        submitButton.disabled = false;
+        submitButton.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Envoyer le message';
+    }
+});
+</script>
+{% endblock %} 
