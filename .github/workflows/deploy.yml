@@ -92,22 +92,25 @@ jobs:
           -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
           -H "Content-Type: application/json" \
           "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" 
-          
-  deploy-github-pages:
+  
+    deploy-github-pages:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     permissions:
-      contents: write
+        contents: write
     steps:
-      - name: Download build artifacts
+        - name: Checkout repository
+        uses: actions/checkout@v3
+        - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: portfolio-build
-          path: .
-          
-      - name: Deploy to GitHub Pages
+            name: portfolio-build
+            path: .
+            
+        - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .
-          branch: gh-pages 
+            folder: .
+            branch: gh-pages
+            clean: true
