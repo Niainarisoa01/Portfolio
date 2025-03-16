@@ -17,11 +17,11 @@ COPY requirements.txt package.json tailwind.config.js ./
 # Installer les dépendances Python
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copier le reste du code avant de construire les assets
+COPY . .
+
 # Installer les dépendances Node.js et construire les assets
 RUN npm install && npm run build
-
-# Copier le reste du code
-COPY . .
 
 # Exposer le port
 EXPOSE 5000

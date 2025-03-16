@@ -56,13 +56,13 @@ jobs:
       - name: Create .env file
         run: |
           echo "DEBUG=False" >> .env
-          echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env
-          echo "MAIL_SERVER=${{ secrets.MAIL_SERVER }}" >> .env
-          echo "MAIL_PORT=${{ secrets.MAIL_PORT }}" >> .env
-          echo "MAIL_USE_TLS=${{ secrets.MAIL_USE_TLS }}" >> .env
-          echo "MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}" >> .env
-          echo "MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}" >> .env
-          echo "MAIL_DEFAULT_SENDER=${{ secrets.MAIL_DEFAULT_SENDER }}" >> .env
+          echo "SECRET_KEY=default_secret_key_for_ci" >> .env
+          echo "MAIL_SERVER=smtp.gmail.com" >> .env
+          echo "MAIL_PORT=587" >> .env
+          echo "MAIL_USE_TLS=True" >> .env
+          echo "MAIL_USERNAME=test@example.com" >> .env
+          echo "MAIL_PASSWORD=password" >> .env
+          echo "MAIL_DEFAULT_SENDER=test@example.com" >> .env
           
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
@@ -74,7 +74,7 @@ jobs:
   deploy-railway:
     needs: build
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' }}
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v3
@@ -93,7 +93,7 @@ jobs:
   deploy-render:
     needs: build
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' }}
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v3
