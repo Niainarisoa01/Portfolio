@@ -1,202 +1,160 @@
-# Portfolio Personnel - Développeur Full Stack
+# Portfolio de Niainarisoa
 
-Un portfolio moderne et responsive développé avec Flask, Tailwind CSS et JavaScript.
+Un portfolio moderne et responsive développé avec Flask et Tailwind CSS.
 
 ## 🚀 Fonctionnalités
 
-- Design moderne et responsive
+- Design moderne et responsive avec Tailwind CSS
 - Mode sombre/clair
-- Animations fluides
-- Filtrage des projets
-- Formulaire de contact
-- Interface utilisateur intuitive
-- Optimisé pour les performances
-- Base de données SQLite intégrée
+- Animations et transitions fluides
+- Formulaire de contact fonctionnel
+- Options d'accessibilité
+- Mode d'impression optimisé
 
-## 🛠️ Technologies Utilisées
+## 🛠️ Technologies utilisées
 
-- **Frontend**:
-  - HTML5
-  - Tailwind CSS
-  - JavaScript
-  - Font Awesome Icons
-
-- **Backend**:
-  - Python 3.x
-  - Flask
-  - Flask-Mail
-  - Flask-SQLAlchemy
+- **Backend**: Python, Flask
+- **Frontend**: HTML, CSS, JavaScript, Tailwind CSS
+- **Déploiement**: Docker, GitHub Actions, Railway, Render
 
 ## 📋 Prérequis
 
-- Python 3.8 ou supérieur
-- pip (gestionnaire de paquets Python)
-- Node.js et npm (pour Tailwind CSS)
-- Git
+- Python 3.10+
+- Node.js 18+
+- npm ou yarn
 
 ## 🔧 Installation
 
-1. Clonez le repository :
-```bash
-git clone https://github.com/votre-username/portfolio.git
-cd portfolio
-```
+1. Clonez le dépôt:
+   ```bash
+   git clone https://github.com/votre-username/portfolio.git
+   cd portfolio
+   ```
 
-2. Créez un environnement virtuel Python :
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
-```
+2. Créez un environnement virtuel et installez les dépendances:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # Sur Windows: .venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
 
-3. Installez les dépendances Python :
-```bash
-pip install -r requirements.txt
-```
+3. Installez les dépendances Node.js:
+   ```bash
+   npm install
+   ```
 
-4. Installez les dépendances Node.js :
-```bash
-npm install
-```
+4. Créez un fichier `.env` à la racine du projet:
+   ```
+   DEBUG=True
+   SECRET_KEY=votre_clé_secrète
+   MAIL_SERVER=smtp.gmail.com
+   MAIL_PORT=587
+   MAIL_USE_TLS=True
+   MAIL_USERNAME=votre_email@gmail.com
+   MAIL_PASSWORD=votre_mot_de_passe_app
+   MAIL_DEFAULT_SENDER=votre_email@gmail.com
+   ```
 
-5. Configurez les variables d'environnement :
-```bash
-cp .env.example .env
-# Modifiez le fichier .env avec vos configurations
-```
+## 🏃‍♂️ Exécution locale
 
-## 🚀 Démarrage
+### Méthode 1: Exécution directe
 
-1. Compilez les assets CSS :
-```bash
-npm run build
-# ou en mode développement :
-npm run watch
-```
+1. Compilez les assets CSS:
+   ```bash
+   npm run build
+   ```
 
-2. Lancez le serveur Flask :
-```bash
-python app.py
-```
+2. Lancez l'application:
+   ```bash
+   python run.py
+   ```
 
-3. Accédez à l'application :
-```
-http://localhost:5000
-```
+3. Pour le développement, vous pouvez utiliser le mode watch pour Tailwind:
+   ```bash
+   npm run watch
+   ```
 
-## 📁 Structure du Projet
+### Méthode 2: Utilisation de Docker Compose
 
-```
-portfolio/
-├── app.py              # Application Flask principale
-├── requirements.txt    # Dépendances Python
-├── package.json        # Dépendances Node.js
-├── static/
-│   ├── css/           # Fichiers CSS compilés
-│   ├── js/            # Scripts JavaScript
-│   └── images/        # Images et assets
-├── templates/         # Templates HTML
-│   ├── layout.html    # Template de base
-│   ├── index.html     # Page d'accueil
-│   ├── about.html     # Page À propos
-│   ├── projects.html  # Page Projets
-│   └── contact.html   # Page Contact
-└── venv/             # Environnement virtuel Python
-```
+1. Lancez l'application avec Docker Compose:
+   ```bash
+   docker-compose up
+   ```
 
-## 🔧 Configuration
+## 🚢 Déploiement
 
-### Variables d'environnement (.env)
+### Configuration CI/CD avec GitHub Actions
 
-```env
-FLASK_APP=app.py
-FLASK_ENV=development
-SECRET_KEY=votre-clé-secrète
-MAIL_SERVER=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USERNAME=votre-email@gmail.com
-MAIL_PASSWORD=votre-mot-de-passe
-```
+Ce projet est configuré pour un déploiement automatique via GitHub Actions. À chaque push sur la branche `main` ou `master`, le workflow suivant est exécuté:
 
-### Base de données
+1. **Test**: Vérifie que le code est conforme aux standards
+2. **Build**: Compile les assets et prépare l'application pour le déploiement
+3. **Deploy**: Déploie l'application sur Railway et/ou Render
 
-La base de données SQLite est automatiquement créée au premier lancement.
+### Configuration des secrets GitHub
 
-## 🎨 Personnalisation
+Pour que le déploiement fonctionne, vous devez configurer les secrets suivants dans votre dépôt GitHub:
 
-### Tailwind CSS
+1. Allez dans Settings > Secrets and variables > Actions
+2. Ajoutez les secrets suivants:
+   - `SECRET_KEY`: Clé secrète pour Flask
+   - `MAIL_SERVER`: Serveur SMTP
+   - `MAIL_PORT`: Port SMTP
+   - `MAIL_USE_TLS`: Utilisation de TLS (True/False)
+   - `MAIL_USERNAME`: Nom d'utilisateur SMTP
+   - `MAIL_PASSWORD`: Mot de passe SMTP
+   - `MAIL_DEFAULT_SENDER`: Expéditeur par défaut
+   - `RAILWAY_TOKEN`: Token d'API Railway (si vous utilisez Railway)
+   - `RENDER_API_KEY`: Clé API Render (si vous utilisez Render)
+   - `RENDER_SERVICE_ID`: ID du service Render (si vous utilisez Render)
 
-Modifiez le fichier `tailwind.config.js` pour personnaliser :
-- Couleurs
-- Polices
-- Animations
-- Breakpoints
+### Déploiement manuel
 
-### Contenu
+#### Railway
 
-1. Images : Placez vos images dans `static/images/`
-2. Projets : Modifiez `templates/projects.html`
-3. Informations personnelles : Modifiez `templates/about.html`
+1. Installez le CLI Railway:
+   ```bash
+   npm install -g @railway/cli
+   ```
 
-## 📱 Responsive Design
+2. Connectez-vous à Railway:
+   ```bash
+   railway login
+   ```
 
-Le site est optimisé pour :
-- Mobile (< 640px)
-- Tablette (640px - 1024px)
-- Desktop (> 1024px)
+3. Liez votre projet:
+   ```bash
+   railway link
+   ```
 
-## 🌙 Mode Sombre
+4. Déployez:
+   ```bash
+   railway up
+   ```
 
-Activez/désactivez le mode sombre avec le bouton dans la navigation.
+#### Render
 
-## 🚀 Déploiement
+1. Créez un nouveau service Web sur Render
+2. Connectez votre dépôt GitHub
+3. Configurez les variables d'environnement
+4. Déployez
 
-### Heroku
-```bash
-heroku create
-git push heroku main
-```
+## 📝 Personnalisation
 
-### VPS/Serveur
-```bash
-# Installez gunicorn
-pip install gunicorn
+### Modification du contenu
 
-# Lancez avec gunicorn
-gunicorn app:app
-```
+- Les templates se trouvent dans `app/templates/`
+- Les styles CSS personnalisés sont dans `app/static/css/custom.css`
+- Les scripts JavaScript sont dans `app/static/js/main.js`
 
-## 📝 Maintenance
+### Ajout d'images
 
-### Mise à jour des dépendances
-```bash
-pip install --upgrade -r requirements.txt
-npm update
-```
-
-### Backup
-```bash
-# Base de données
-sqlite3 instance/database.db .dump > backup.sql
-
-# Images
-cp -r static/images/ backup/
-```
-
-## 🤝 Contribution
-
-1. Fork le projet
-2. Créez votre branche (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une Pull Request
+Placez vos images dans le dossier `app/static/images/`
 
 ## 📄 Licence
 
-Distribué sous la licence MIT. Voir `LICENSE` pour plus d'informations.
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 ## 📧 Contact
 
-NOMENJANAHARY Niainarisoa - niainarisoa.mail@gmail.com
-
-Lien du projet : [https://github.com/votre-username/portfolio](https://github.com/votre-username/portfolio)
+Pour toute question ou suggestion, n'hésitez pas à me contacter à [niainarisoa.mail@gmail.com](mailto:niainarisoa.mail@gmail.com).

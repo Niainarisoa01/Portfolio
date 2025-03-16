@@ -8,6 +8,9 @@ from datetime import datetime, timedelta
 from functools import wraps
 import redis
 import html
+import logging
+
+logger = logging.getLogger(__name__)
 
 main_bp = Blueprint('main', __name__)
 CORS(main_bp)
@@ -27,16 +30,22 @@ def rate_limit(limit=5, window=3600):
             ip = request.remote_addr
             now = datetime.now()
             
-            # Nettoyer les anciennes entrées
-            email_attempts.update((k, v) for k, v in email_attempts.items() 
-                                if v['timestamp'] > now - timedelta(seconds=window))
+            # Nettoyer les anciennes entrées (optimisation)
+            current_time = datetime.now()
+            cutoff_time = current_time - timedelta(seconds=window)
+            
+            # Utiliser une liste de compréhension pour filtrer les entrées expirées
+            expired_ips = [k for k, v in email_attempts.items() if v['timestamp'] < cutoff_time]
+            for expired_ip in expired_ips:
+                email_attempts.pop(expired_ip, None)
             
             # Vérifier les tentatives pour cette IP
             if ip in email_attempts:
                 if email_attempts[ip]['count'] >= limit:
+                    retry_after = window - (now - email_attempts[ip]['timestamp']).seconds
                     return jsonify({
                         'error': 'Trop de tentatives. Veuillez réessayer plus tard.',
-                        'retry_after': window - (now - email_attempts[ip]['timestamp']).seconds
+                        'retry_after': retry_after
                     }), 429
                 email_attempts[ip]['count'] += 1
             else:
@@ -48,13 +57,10 @@ def rate_limit(limit=5, window=3600):
 
 def sanitize_input(text):
     """Nettoie les entrées utilisateur"""
-    if not text:
+    if text is None:
         return ""
     # Échapper les caractères HTML
-    text = html.escape(text)
-    # Supprimer les caractères dangereux
-    text = ''.join(char for char in text if char.isprintable())
-    return text.strip()
+    return html.escape(text.strip())
 
 @main_bp.route('/contact', methods=['GET', 'POST', 'OPTIONS'])
 @rate_limit(limit=5, window=3600)  # 5 emails par heure

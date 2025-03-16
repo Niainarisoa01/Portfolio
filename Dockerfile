@@ -1,24 +1,35 @@
-FROM python:3.9-slim
+FROM python:3.10-slim
 
 WORKDIR /app
 
-RUN apt-get update && \
-    apt-get install -y nodejs npm && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+# Installer Node.js pour Tailwind CSS
+RUN apt-get update && apt-get install -y \
+    curl \
+    gnupg \
+    && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt package.json package-lock.json* ./
+# Copier les fichiers de configuration
+COPY requirements.txt package.json tailwind.config.js ./
 
+# Installer les dépendances Python
 RUN pip install --no-cache-dir -r requirements.txt
-RUN npm install
 
+# Installer les dépendances Node.js et construire les assets
+RUN npm install && npm run build
+
+# Copier le reste du code
 COPY . .
 
-RUN npm run build
-
-ENV FLASK_APP=run.py
-ENV FLASK_ENV=production
-
+# Exposer le port
 EXPOSE 5000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "run:app"] 
+# Définir les variables d'environnement
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PORT=5000
+
+# Commande pour démarrer l'application
+CMD ["python", "run.py"] 

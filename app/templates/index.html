@@ -1,14 +1,23 @@
 {% extends "layout.html" %}
 
-{% block title %}Accueil - Mon Portfolio{% endblock %}
+{% block title %}Accueil - Portfolio de Niainarisoa{% endblock %}
 
 {% block content %}
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
 <div class="max-w-6xl mx-auto">
-    <!-- Hero Section améliorée -->
-    <div class="flex flex-col-reverse lg:flex-row items-center justify-between py-12 gap-8">
-        <div class="lg:w-1/2 space-y-6">
+    <!-- Hero Section avec effet de parallaxe -->
+    <div class="flex flex-col-reverse lg:flex-row items-center justify-between py-12 gap-8 relative overflow-hidden">
+        <!-- Éléments de fond avec parallaxe -->
+        <div class="absolute inset-0 opacity-10 dark:opacity-20 overflow-hidden pointer-events-none" aria-hidden="true">
+            <div class="parallax absolute -right-20 -top-20 w-64 h-64 rounded-full bg-blue-500 filter blur-3xl" data-speed="30"></div>
+            <div class="parallax absolute -left-20 top-40 w-72 h-72 rounded-full bg-purple-500 filter blur-3xl" data-speed="20"></div>
+            <div class="parallax absolute right-40 bottom-0 w-80 h-80 rounded-full bg-pink-500 filter blur-3xl" data-speed="25"></div>
+        </div>
+        
+        <div class="lg:w-1/2 space-y-6 z-10">
             <h1 class="text-4xl md:text-6xl font-bold animate-slide-up">
-                <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+                <span class="gradient-text">
                     Développeur Web
                 </span>
                 <br>
@@ -17,232 +26,236 @@
                 </span>
             </h1>
             <p class="text-xl text-gray-600 dark:text-gray-300 animate-fade-in leading-relaxed" style="animation-delay: 600ms;">
-                Développeur d'applications modernes et performantes en Python, React, et Desktop
+                Je crée des applications modernes et performantes en Python, React, et Desktop
             </p>
             <!-- Boutons d'action -->
             <div class="flex flex-wrap gap-4 animate-fade-in" style="animation-delay: 900ms;">
                 <a href="/projects" class="btn-primary">
-                    <i class="fas fa-code mr-2"></i>Voir mes projets
+                    <i class="fas fa-code mr-2" aria-hidden="true"></i>Voir mes projets
                 </a>
                 <a href="/contact" class="btn-secondary">
-                    <i class="fas fa-envelope mr-2"></i>Me contacter
+                    <i class="fas fa-envelope mr-2" aria-hidden="true"></i>Me contacter
                 </a>
             </div>
 
             <!-- Technologies avec animation -->
             <div class="flex flex-wrap gap-4 pt-6">
                 <!-- Python -->
-                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
-                    <i class="fab fa-python text-blue-500 group-hover:animate-bounce"></i>
+                <span class="tech-badge px-4 py-2 glass rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group tooltip" data-tooltip="Python">
+                    <i class="fab fa-python text-blue-500 group-hover:animate-bounce" aria-hidden="true"></i>
                     <span class="ml-2 text-gray-700 dark:text-gray-300">Python</span>
                 </span>
 
                 <!-- JavaScript -->
-                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
-                    <i class="fab fa-js text-yellow-500 group-hover:animate-bounce"></i>
+                <span class="tech-badge px-4 py-2 glass rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group tooltip" data-tooltip="JavaScript">
+                    <i class="fab fa-js text-yellow-500 group-hover:animate-bounce" aria-hidden="true"></i>
                     <span class="ml-2 text-gray-700 dark:text-gray-300">JavaScript</span>
                 </span>
 
                 <!-- React -->
-                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
-                    <i class="fab fa-react text-blue-400 group-hover:animate-spin"></i>
+                <span class="tech-badge px-4 py-2 glass rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group tooltip" data-tooltip="React">
+                    <i class="fab fa-react text-blue-400 group-hover:animate-spin" aria-hidden="true"></i>
                     <span class="ml-2 text-gray-700 dark:text-gray-300">React</span>
                 </span>
-
-                <!-- Node.js -->
-                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
-                    <i class="fab fa-node text-green-500 group-hover:animate-bounce"></i>
-                    <span class="ml-2 text-gray-700 dark:text-gray-300">Node.js</span>
-                </span>
-
+                
                 <!-- Flask -->
-                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
-                    <i class="fas fa-flask text-gray-600 dark:text-gray-400 group-hover:animate-bounce"></i>
+                <span class="tech-badge px-4 py-2 glass rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group tooltip" data-tooltip="Flask">
+                    <i class="fas fa-flask text-green-500 group-hover:animate-bounce" aria-hidden="true"></i>
                     <span class="ml-2 text-gray-700 dark:text-gray-300">Flask</span>
                 </span>
-
-                <!-- REST API -->
-                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
-                    <i class="fas fa-network-wired text-purple-500 group-hover:animate-pulse"></i>
-                    <span class="ml-2 text-gray-700 dark:text-gray-300">REST API</span>
-                </span>
-
-                <!-- Tailwind -->
-                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
-                    <i class="fab fa-css3 text-cyan-500 group-hover:animate-bounce"></i>
-                    <span class="ml-2 text-gray-700 dark:text-gray-300">Tailwind</span>
-                </span>
-
-                <!-- Material UI -->
-                <span class="tech-badge px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-full shadow-sm backdrop-blur-sm transform hover:scale-110 transition-all duration-300 cursor-pointer group">
-                    <i class="fas fa-palette text-blue-600 group-hover:animate-bounce"></i>
-                    <span class="ml-2 text-gray-700 dark:text-gray-300">Material UI</span>
-                </span>
             </div>
         </div>
 
-        <!-- Nouvelle section droite avec design professionnel -->
-        <div class="lg:w-1/2 relative">
-            <div class="relative z-10 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80">
-                <div class="absolute -top-4 -left-4 w-24 h-24 bg-blue-500/10 rounded-full animate-pulse-slow"></div>
-                <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-purple-500/10 rounded-full animate-pulse-slow" style="animation-delay: 1s;"></div>
-                
-                <!-- Carte de profil -->
-                <div class="relative z-20 space-y-6">
-                    <div class="flex items-center space-x-4">
-                        <div class="relative">
-                            <img src="{{ url_for('static', filename='images/profile.jpg') }}" 
-                                 alt="NOMENJANAHARY Niainarisoa" 
-                                 class="w-20 h-20 rounded-full object-cover ring-4 ring-blue-500/30">
-                            <div class="absolute -bottom-2 -right-2 bg-green-500 w-4 h-4 rounded-full border-2 border-white dark:border-gray-800"></div>
+        <!-- Image de profil avec animation -->
+        <div class="lg:w-1/2 flex justify-center">
+            <div class="relative">
+                <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 blur-lg animate-pulse-glow" aria-hidden="true"></div>
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Photo de profil de Niainarisoa" class="w-64 h-64 object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-xl animate-float z-10 relative">
+            </div>
+        </div>
+    </div>
+
+    <!-- Section À propos résumée -->
+    <section class="py-16" aria-labelledby="about-heading">
+        <div class="glass rounded-2xl p-8 shadow-xl">
+            <h2 id="about-heading" class="text-3xl font-bold mb-6 gradient-text inline-block">À propos de moi</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        Passionné par le développement web et les nouvelles technologies, je crée des applications modernes, 
+                        performantes et accessibles. Mon expertise couvre le développement full stack, de la conception 
+                        d'interfaces utilisateur à la mise en place d'architectures backend robustes.
+                    </p>
+                    <a href="/about" class="inline-block mt-4 text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                        <i class="fas fa-arrow-right mr-2" aria-hidden="true"></i>En savoir plus
+                    </a>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Mes compétences</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300">Python/Flask</span>
+                                <span class="text-gray-700 dark:text-gray-300">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar bg-gradient-to-r from-blue-600 to-indigo-600 h-2.5 rounded-full" data-percentage="90%"></div>
+                            </div>
                         </div>
                         <div>
-                            <h2 class="text-xl font-bold text-gray-800 dark:text-white">NOMENJANAHARY Niainarisoa</h2>
-                            <p class="text-gray-600 dark:text-gray-300">Développeur Full Stack</p>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300">JavaScript/React</span>
+                                <span class="text-gray-700 dark:text-gray-300">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar bg-gradient-to-r from-yellow-400 to-orange-500 h-2.5 rounded-full" data-percentage="85%"></div>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Statistiques rapides -->
-                    <div class="grid grid-cols-3 gap-4 py-4 border-t border-b border-gray-200 dark:border-gray-700">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-blue-600">3+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Années d'exp.</div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300">HTML/CSS/Tailwind</span>
+                                <span class="text-gray-700 dark:text-gray-300">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar bg-gradient-to-r from-pink-500 to-rose-500 h-2.5 rounded-full" data-percentage="95%"></div>
+                            </div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-purple-600">20+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Projets</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-green-600">15+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Clients</div>
-                        </div>
-                    </div>
-
-                    <!-- Technologies principales -->
-                    <div class="space-y-2">
-                        <h3 class="text-sm font-semibold text-gray-600 dark:text-gray-400">Technologies principales</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm">Python</span>
-                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm">React</span>
-                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm">Flask</span>
-                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm">Node.js</span>
-                        </div>
-                    </div>
-
-                    <!-- Disponibilité -->
-                    <div class="flex items-center justify-between">
-                        <span class="flex items-center text-green-600">
-                            <i class="fas fa-circle text-xs mr-2"></i>
-                            Disponible pour des projets
-                        </span>
-                        <a href="/contact" class="text-blue-600 hover:text-blue-700 font-medium text-sm">
-                            Contactez-moi <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
                     </div>
                 </div>
             </div>
-
-            <!-- Éléments décoratifs -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10">
-                <div class="absolute top-0 left-0 w-72 h-72 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse-slow"></div>
-                <div class="absolute bottom-0 right-0 w-72 h-72 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
-            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Featured Skills Section -->
-    <div class="mt-24">
-        <h2 class="text-3xl font-bold text-center mb-12 animate-fade-in">
-            <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-                Mes Compétences
-            </span>
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="card p-6 animate-on-scroll">
-                <div class="text-4xl mb-4 bg-blue-100 dark:bg-blue-900/30 w-16 h-16 rounded-lg flex items-center justify-center text-blue-600">
-                    <i class="fas fa-laptop-code"></i>
+    <!-- Projets récents -->
+    <section class="py-16 print-break-after" aria-labelledby="projects-heading">
+        <h2 id="projects-heading" class="text-3xl font-bold mb-8 gradient-text inline-block">Projets récents</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Projet 1 -->
+            <div class="project-card glass rounded-xl overflow-hidden shadow-lg">
+                <div class="relative overflow-hidden group">
+                    <img src="{{ url_for('static', filename='images/project1.jpg') }}" alt="Capture d'écran du projet d'application web Flask" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4">
+                            <h3 class="text-white font-bold">Application Web Flask</h3>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">Frontend</h3>
-                <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>HTML5 / CSS3
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>JavaScript / TypeScript
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>React.js / Vue.js
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>Tailwind CSS
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card p-6 animate-on-scroll" style="animation-delay: 200ms;">
-                <div class="text-4xl mb-4 bg-purple-100 dark:bg-purple-900/30 w-16 h-16 rounded-lg flex items-center justify-center text-purple-600">
-                    <i class="fas fa-server"></i>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg text-gray-800 dark:text-white mb-2">Application Web Flask</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Une application web complète avec authentification, base de données et API REST.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Python</span>
+                        <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded text-xs">Flask</span>
+                        <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded text-xs">JavaScript</span>
+                    </div>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">Backend</h3>
-                <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>Python / Flask
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>Node.js / Express
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>SQL / NoSQL
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>RESTful APIs
-                    </li>
-                </ul>
             </div>
-
-            <div class="card p-6 animate-on-scroll" style="animation-delay: 400ms;">
-                <div class="text-4xl mb-4 bg-green-100 dark:bg-green-900/30 w-16 h-16 rounded-lg flex items-center justify-center text-green-600">
-                    <i class="fas fa-tools"></i>
+            
+            <!-- Projet 2 -->
+            <div class="project-card glass rounded-xl overflow-hidden shadow-lg">
+                <div class="relative overflow-hidden group">
+                    <img src="{{ url_for('static', filename='images/project2.jpg') }}" alt="Capture d'écran du projet d'application React" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4">
+                            <h3 class="text-white font-bold">Application React</h3>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">DevOps</h3>
-                <ul class="space-y-3 text-gray-600 dark:text-gray-300">
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>Git / GitHub
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>Docker
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>CI/CD
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check text-green-500 mr-2"></i>AWS / Heroku
-                    </li>
-                </ul>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg text-gray-800 dark:text-white mb-2">Application React</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Une application React moderne avec gestion d'état et intégration API.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">React</span>
+                        <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded text-xs">Redux</span>
+                        <span class="px-2 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded text-xs">Tailwind</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projet 3 -->
+            <div class="project-card glass rounded-xl overflow-hidden shadow-lg">
+                <div class="relative overflow-hidden group">
+                    <img src="{{ url_for('static', filename='images/project3.jpg') }}" alt="Capture d'écran du projet d'application desktop" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4">
+                            <h3 class="text-white font-bold">Application Desktop</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg text-gray-800 dark:text-white mb-2">Application Desktop</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Une application desktop multiplateforme avec interface utilisateur moderne.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Python</span>
+                        <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded text-xs">PyQt</span>
+                        <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded text-xs">SQLite</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="text-center mt-8">
+            <a href="/projects" class="btn-primary inline-flex items-center">
+                <span>Voir tous les projets</span>
+                <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+            </a>
+        </div>
+    </section>
 
-    <!-- Statistics Section -->
-    <div class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="card p-6 text-center animate-on-scroll">
-            <div class="text-3xl font-bold text-blue-600">
-                <span class="stat-number" data-target="3">0</span>+
+    <!-- Statistiques -->
+    <section class="py-16" aria-labelledby="stats-heading">
+        <h2 id="stats-heading" class="sr-only">Mes statistiques</h2>
+        <div class="glass rounded-2xl p-8 shadow-xl">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="space-y-2">
+                    <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 stat-number" data-target="25">0</div>
+                    <div class="text-gray-600 dark:text-gray-400">Projets terminés</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl font-bold text-purple-600 dark:text-purple-400 stat-number" data-target="15">0</div>
+                    <div class="text-gray-600 dark:text-gray-400">Clients satisfaits</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl font-bold text-pink-600 dark:text-pink-400 stat-number" data-target="5">0</div>
+                    <div class="text-gray-600 dark:text-gray-400">Années d'expérience</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl font-bold text-indigo-600 dark:text-indigo-400 stat-number" data-target="10">0</div>
+                    <div class="text-gray-600 dark:text-gray-400">Technologies maîtrisées</div>
+                </div>
             </div>
-            <div class="text-gray-600 dark:text-gray-300">Années d'expérience</div>
         </div>
-        <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 200ms;">
-            <div class="text-3xl font-bold text-purple-600">20+</div>
-            <div class="text-gray-600 dark:text-gray-300">Projets réalisés</div>
+    </section>
+
+    <!-- Call to action -->
+    <section class="py-16 no-print" aria-labelledby="cta-heading">
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 p-8 shadow-xl">
+            <div class="absolute inset-0 opacity-20" aria-hidden="true">
+                <div class="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-white"></div>
+                <div class="absolute -left-20 bottom-0 w-64 h-64 rounded-full bg-white"></div>
+            </div>
+            <div class="relative z-10 text-center py-8 md:py-12 px-4 md:px-16">
+                <h2 id="cta-heading" class="text-3xl md:text-4xl font-bold text-white mb-4">Prêt à collaborer sur votre projet ?</h2>
+                <p class="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+                    Je suis disponible pour des missions freelance et des projets passionnants.
+                    N'hésitez pas à me contacter pour discuter de vos besoins.
+                </p>
+                <a href="/contact" class="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-bold shadow-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>Me contacter
+                </a>
+            </div>
         </div>
-        <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 400ms;">
-            <div class="text-3xl font-bold text-green-600">15+</div>
-            <div class="text-gray-600 dark:text-gray-300">Clients satisfaits</div>
-        </div>
-        <div class="card p-6 text-center animate-on-scroll" style="animation-delay: 600ms;">
-            <div class="text-3xl font-bold text-orange-600">100%</div>
-            <div class="text-gray-600 dark:text-gray-300">Taux de satisfaction</div>
-        </div>
-    </div>
+    </section>
 </div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Marquer les éléments pour l'animation au scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            section.classList.add('animate-on-scroll');
+        });
+    });
+</script>
 {% endblock %} 

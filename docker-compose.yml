@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app/app
+      - ./run.py:/app/run.py
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=dev_secret_key
+      - MAIL_SERVER=${MAIL_SERVER:-smtp.gmail.com}
+      - MAIL_PORT=${MAIL_PORT:-587}
+      - MAIL_USE_TLS=${MAIL_USE_TLS:-True}
+      - MAIL_USERNAME=${MAIL_USERNAME}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
+      - MAIL_DEFAULT_SENDER=${MAIL_DEFAULT_SENDER}
+    command: python run.py
+    restart: unless-stopped
+
+  tailwind:
+    image: node:18-alpine
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: npm run watch
+    restart: unless-stopped 

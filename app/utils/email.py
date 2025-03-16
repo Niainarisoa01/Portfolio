@@ -3,6 +3,7 @@ from flask_mail import Message
 from app import mail
 from threading import Thread
 import logging
+import time
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -22,7 +23,7 @@ def send_async_email(app, msg):
 
 def send_email(subject, recipients, body, html=None, async_=True, retry_count=3):
     """
-    Envoie un email avec retry
+    Envoie un email avec retry et backoff exponentiel
     
     Args:
         subject (str): Sujet de l'email
@@ -40,7 +41,6 @@ def send_email(subject, recipients, body, html=None, async_=True, retry_count=3)
                      html=html)
         
         logger.info(f"Tentative d'envoi d'email à {recipients}")
-        logger.info(f"Configuration SMTP: {current_app.config['MAIL_SERVER']}:{current_app.config['MAIL_PORT']}")
         
         if current_app.config.get('TESTING', False):
             logger.info("Mode test: email simulé")
@@ -59,7 +59,10 @@ def send_email(subject, recipients, body, html=None, async_=True, retry_count=3)
             except Exception as e:
                 if attempt == retry_count - 1:  # Dernière tentative
                     raise
-                logger.warning(f"Tentative {attempt + 1} échouée, nouvelle tentative...")
+                # Backoff exponentiel: attendre 2^attempt secondes avant de réessayer
+                wait_time = 2 ** attempt
+                logger.warning(f"Tentative {attempt + 1} échouée, nouvelle tentative dans {wait_time}s...")
+                time.sleep(wait_time)
                 
     except Exception as e:
         error_msg = f"Erreur lors de la création/envoi de l'email: {str(e)}"
