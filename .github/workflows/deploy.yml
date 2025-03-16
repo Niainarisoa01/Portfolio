@@ -87,10 +87,11 @@ jobs:
           path: .
           
       - name: Install Railway CLI
-        run: npm install -g @railway/cli
+        run: npm install -g @railway/cli@3.14.0
         
       - name: Deploy to Railway
-        run: railway up
+        run: |
+          RAILWAY_TOKEN=$RAILWAY_TOKEN railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
           
