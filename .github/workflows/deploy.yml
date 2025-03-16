@@ -68,23 +68,19 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: portfolio-build
-          path: |
-            app/
-            run.py
-            requirements.txt
-            .env
-            Procfile
-            package.json
-            tailwind.config.js
+          path: .
+          if-no-files-found: error
             
   deploy-railway:
     needs: build
     runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' }}
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
           name: portfolio-build
+          path: .
           
       - name: Install Railway CLI
         run: npm install -g @railway/cli
@@ -97,11 +93,13 @@ jobs:
   deploy-render:
     needs: build
     runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' }}
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
           name: portfolio-build
+          path: .
           
       - name: Deploy to Render
         run: |
