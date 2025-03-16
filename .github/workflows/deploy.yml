@@ -90,6 +90,7 @@ jobs:
         uses: docker://ghcr.io/railwayapp/cli:latest
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          PORT: 8080
         with:
           entrypoint: railway
           args: up
