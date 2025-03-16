@@ -86,14 +86,12 @@ jobs:
           name: portfolio-build
           path: .
           
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli@3.14.0
-        
       - name: Deploy to Railway
-        run: |
-          RAILWAY_TOKEN=$RAILWAY_TOKEN railway up
+        uses: docker://ghcr.io/railwayapp/cli:latest
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        with:
+          args: up
           
   deploy-render:
     needs: build
